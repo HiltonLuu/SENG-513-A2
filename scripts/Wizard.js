@@ -12,4 +12,8 @@ class Wizard extends Unit {
             speed: 2,
         });
     }
+
+    //if target is instance of knight, deal damageCalc + 5
+    //else use regular damage calc function
+    attack = (target, targetStrategist, board) => {}
 }

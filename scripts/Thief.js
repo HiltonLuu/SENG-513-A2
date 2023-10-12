@@ -12,4 +12,9 @@ class Thief extends Unit {
             speed: 3,
         });
     }
+
+    //if target is instance of Strategist, attack twice
+    //if target is slower unit, attack twice
+    //else use regular damage calc function
+    attack = (target, targetStrategist, board) => {}
 }

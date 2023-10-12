@@ -12,4 +12,8 @@ class Knight extends Unit {
             speed: 1,
         });
     }
+
+    //if target is instance of Strategist, deal physical damage + 2
+    //else use regular damage calc function
+    attack = (target, targetStrategist, board) => {}
 }

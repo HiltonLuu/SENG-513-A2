@@ -12,4 +12,8 @@ class Archer extends Unit {
             speed: 2,
         });
     }
+
+    //if target is instance of Archer, attack the strategist instead
+    //else use regular damage calc function
+    attack = (target, targetStrategist, board) => {}
 }

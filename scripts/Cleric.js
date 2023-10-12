@@ -12,4 +12,7 @@ class Cleric extends Unit {
             speed: 2,
         });
     }
+
+    //Heal all ally units for 2 health if health is positive
+    attack = (target, targetStrategist, board) => {}
 }

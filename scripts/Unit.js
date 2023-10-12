@@ -20,4 +20,11 @@ class Unit {
         this.magicDefence = obj.magicDefence;
         this.speed = obj.speed;
     }
+
+    //calculating damage
+    //Damage to units  = Health - ((Attacker Physical Damage - Defender Physical Defence) + (Attacker Magic Damage - Defender Magical Defence))
+    damageCalculation = (target) => {}
+
+    //will be implemented at child class level
+    attack = (target, targetStrategist, board) => {}
 }
