@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Master Strategist</title>
+    <link rel="stylesheet" type="text/css" href="/styles/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap">
+
+</head>
+
+<body>
+
+
+    <h1 class="tutorialTitle">Tutorial</h1>
+
+    <div class="container">
+    <h2>Game Objective</h2>
+    <p>Master Strategist is a fast-paced 2-player game where both players take on the role of a strategists battling
+        against each other. You must guide your troops to victory by tactfully defeating the enemy team.</p>
+
+
+    <p>This can be done through various win conditions.</p>
+    <ol>
+        <li>Defeat 10 enemy units</li>
+        <li>Reduce the opposing strategist's health to 0</li>
+    </ol>
+
+    <h2>Rules</h2>
+
+    <ul>
+        <li>Each strategist begins with 100 health.</li>
+        <li>Every round, both players are given 2 action points that can accumulate between rounds if not used.</li>
+        <li>The battlefield consists of a 2x5 grid with each strategist controlling 1x5 of the board.</li>
+        <li>
+            During their turn, players can do the following actions which should be done in secret of the other player
+            <ul>
+                <li>Place a new unit (1 action point): Players can spend 1 action point to place a unit on an open space
+                    of their board. They must evaluate the board state to see which unit will be the most effective in
+                    the given situation! As long as you have action points and you have space on the board, you can
+                    place more units.</li>
+                <li>Swap position (free): Players may freely swap the positioning of units during their turn
+                    strategically to gain an advantage over their opposition.</li>
+                <li>End Turn (free): Once a player is satisfied with their actions, they can end their turn, player1
+                    passes to player2. Once player2 ends their turn, combat for the round commences!</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Unit Classes</h2>
+    <p>There are 5 unique units each with their own stats and special abilities:</p>
+    <div class="unitCard">
+        <img src="/assets/knight.png" />
+        <ul>
+            <li>List Item 1</li>
+            <li>List Item 2</li>
+            <li>List Item 3</li>
+        </ul>
+    </div>
+
+    
+
+    <h2>Battle</h2>
+    <p>Once both players end their turns, combat commences</p>
+
+    <ul>
+        <li>Starting from left to right, units battle the opposition directly above or below them.</li>
+        <li>If a unit is attacking an empty space, deal damage to the strategist equal to the unit’s physical/magic
+            damage stat.</li>
+        <li>Special Abilities are applied when units attack.</li>
+        <li>
+            If attacking opposing units
+            <ol>
+                <li>Highest speed attacks first and activates any special abilities.</li>
+                <li>Then the other unit attacks if it survived the other unit’s attack and activates any special
+                    abilities.</li>
+                <li>Units tied in speed attack each other simultaneously and apply special abilities accordingly.</li>
+                <li>Damage to units = Health - ((Attacker Physical Damage - Defender Physical Defence) + (Attacker Magic
+                    Damage - Defender Magical Defence))</li>
+            </ol>
+        </li>
+        <li>Extra damage that is dealt as a result of defeating a unit is dealt to the strategist. Example: A wizard
+            deals 15 magic damage to a 5 health knight, then 10 damage is dealt to the strategist who owns the knight.
+        </li>
+
+    </ul>
+    </div>
+
+    <a href="game.html">
+        <img class="startButton2" src="/assets/startButton.png" width="400" />
+    </a>
+</body>
+
+</html>

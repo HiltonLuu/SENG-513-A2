@@ -1,0 +1,144 @@
+* {
+    //margin: 0;
+    //padding: 0;
+}
+
+body {
+    background-color: #edbd76;
+    color: #ffffff;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.scenery {
+    position: absolute;
+    left: 50%; // Center horizontally
+
+    transform: translate(-50%, 0%);
+    filter: grayscale(80%);
+    z-index: -1;
+}
+
+.gameTitle {
+    opacity: 0;
+    position: absolute;
+    z-index: 1;
+    font-size: 4rem;
+    text-align: center;
+    margin-top: 15%;
+    width: 0%;
+    padding: 10px;
+    left: 50%; // Center horizontally
+    transform: translate(-50%, 0%);
+    background-color: #ffffff; // Background color for the rounded rectangle
+    border-radius: 10px; // Add rounded corners
+    font-family: 'DotGothic16', sans-serif;
+    color: #4e6df3;
+    animation: typewriter 2s steps(40) 1s forwards;
+}
+
+@keyframes typewriter {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 30%;
+        opacity: 1;
+    }
+}
+
+.startButton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 25%;
+    opacity: 0;
+    animation: fadeInAndOut 3s linear infinite;
+    animation-delay: 3.5s;
+}
+
+@keyframes fadeInAndOut {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tutorialTitle {
+    text-align: center;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    font-family: 'DotGothic16', sans-serif;
+    font-size: 4rem;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeIn 4s ease-in-out forwards;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'DotGothic16', sans-serif;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    p,
+    li {
+        font-size: 1.5rem;
+
+        padding: {
+            top: 0.5rem;
+            bottom: 0.5rem;
+        }
+    }
+}
+
+.startButton2 {
+    position: fixed;
+    bottom: 5px;
+    /* Adjust as needed */
+    right: 10px;
+    /* Adjust as needed */
+    z-index: 999;
+    /* Ensure it appears on top of other content */
+    width: 200px;
+}
+
+.unitCard {
+    display: flex;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
