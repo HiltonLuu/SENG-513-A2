@@ -8,8 +8,11 @@ Tutorial for the game can be found in the tutorial.html file
 
 ## Assets
 Game Characters drawn by my girlfriend
+
 https://www.pngwing.com/en/free-png-ygowv/download Pixel Heart
+
 https://www.pngwing.com/en/free-png-cbbwy/download Pixel Coin
+
 https://creator.nightcafe.studio/my-creations Main background image
 
 ## Class Diagrams
