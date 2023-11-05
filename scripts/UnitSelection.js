@@ -3,6 +3,7 @@ import { Wizard } from "./Wizard.js";
 import { Thief } from "./Thief.js";
 import { Archer } from "./Archer.js";
 import { Cleric } from "./Cleric.js";
+import { state, rerenderBoard } from "./GameDriver.js";
 
 const changeStatDisplay = (unit) => {
   document.getElementById("unit-name").textContent = unit.type;
@@ -47,6 +48,58 @@ const handleUnitSelectionButtonEvents = (buttonId, unitClass) => {
   button.addEventListener("click", () => {
     document.getElementById("new-unit-overlay").style.display = "none";
     document.getElementById("new-unit-placement").style.display = "flex";
+
+    let currentPlayer;
+
+    if (state.turn === 1) {
+      currentPlayer = state.player1;
+    }
+
+    if (state.turn === 2) {
+      currentPlayer = state.player2;
+    }
+
+    let boardState = currentPlayer.board;
+    let board = document.getElementById("unit-placement-board");
+    board.innerHTML = "";
+    let row = document.createElement("tr");
+
+    for (let i = 0; i < boardState.length; i++) {
+      let cell = document.createElement("td");
+
+      cell.addEventListener("mouseenter", () => {
+        if (boardState[i] != "") {
+          cell.style.borderColor = "#FF0000";
+        } else {
+          cell.style.borderColor = "#008000";
+        }
+      });
+
+      cell.addEventListener("mouseleave", () => {
+        cell.style.borderColor = "#FFFFFF";
+      });
+
+      cell.addEventListener("click", () => {
+        if (boardState[i] === "") {
+          currentPlayer.placeNewUnit(new unitClass(), i);
+          document.getElementById("new-unit-placement").style.display = "none";
+          rerenderBoard();
+        }
+      });
+
+      if (boardState[i] != "") {
+        let img = document.createElement("img");
+        img.classList.add("center-image");
+        img.style.width = "100px";
+        img.src =
+          "../assets/" + String(boardState[i].type).toLowerCase() + ".png";
+        cell.appendChild(img);
+      }
+
+      row.appendChild(cell);
+    }
+
+    board.appendChild(row);
   });
 };
 
