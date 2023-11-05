@@ -63,22 +63,16 @@ UCID: 30085893
         </div>
     </div>
 
-    <table class="board">
-        <tr>
+    <table class="board" id="game-board">
+        <tr id="player2-board">
             <td>
-                    <div class="unitHealth">
-                        <img src="/assets/heart.png" width="50" />
-                            <p>20</p>
-                        </div>
-                    
-                <img src="/assets/knight.png" width="125px" />
             </td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
         </tr>
-        <tr>
+        <tr id="player1-board">
             <td></td>
             <td></td>
             <td></td>
@@ -88,10 +82,95 @@ UCID: 30085893
     </table>
 
     <div class="actionButtons">
-    <button>New Unit</button>
-    <button>Move Unit</button>
-    <button>End Turn</button>
-</div>
+        <button id="new-unit-button">New Unit</button>
+        <button id="move-unit-button">Move Unit</button>
+        <button id="end-turn-button">End Turn</button>
+    </div>
+
+    <div class="new-unit-overlay general-overlay" id="new-unit-overlay">
+        <h1 id="unit-selection-instruction">Choose Your Unit</h1>
+
+        <div class="unit-selection">
+            <button id="knight"><img src="/assets/knight.png" width="200" /></button>
+            <button id="wizard"><img src="/assets/wizard.png" width="200" /></button>
+            <button id="archer"><img src="/assets/archer.png" width="200" /></button>
+            <button id="thief"><img src="/assets/thief.png" width="200" /></button>
+            <button id="cleric"><img src="/assets/cleric.png" width="200" /></button>
+        </div>
+
+        <div class="unit-selection-stats">
+            <div>
+                <h2 id="unit-name"></h2>
+                <br>
+                <h3>Special Ability:</h3>
+                <p id="special-ability"></p>
+            </div>
+            <table>
+                <tr class="stats">
+                    <td><img src="/assets/heart.png" width="50" /></td>
+                    <td>
+                        <p>Health:</p>
+                    </td>
+                    <td>
+                        <p id="health"></p>
+                    </td>
+                </tr>
+                <tr class="stats">
+                    <td><img src="/assets/sword.png" width="50" /></td>
+                    <td>
+                        <p>Phys. DMG:</p>
+                    </td>
+                    <td>
+                        <p id="physical-damage"></p>
+                    </td>
+                </tr>
+                <tr class="stats">
+                    <td><img src="/assets/shield.png" width="50" /></td>
+                    <td>
+                        <p>Phys. DEF:</p>
+                    </td>
+                    <td>
+                        <p id="physical-defence"></p>
+                    </td>
+                </tr>
+                <tr class="stats">
+                    <td><img src="/assets/wand.png" width="50" /></td>
+                    <td>
+                        <p>Mag. DMG:</p>
+                    </td>
+                    <td>
+                        <p id="magic-damage"></p>
+                    </td>
+                </tr>
+                <tr class="stats">
+                    <td><img src="/assets/shield2.png" width="50" /></td>
+                    <td>
+                        <p>Mag. DEF:</p>
+                    </td>
+                    <td>
+                        <p id="magic-defence"></p>
+                    </td>
+                </tr>
+                <tr class="stats">
+                    <td><img src="/assets/boot.png" width="50" /></td>
+                    <td>
+                        <p>Speed:</p>
+                    </td>
+                    <td>
+                        <p id="speed"></p>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <div class="new-unit-overlay general-overlay" id="new-unit-placement">
+        <h1>Choose placement of your unit</h1>
+    </div>
+    <script type="module" src="./scripts/GameDriver.js"></script>
 </body>
 
 </html>

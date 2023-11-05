@@ -6,288 +6,348 @@ Name: Hilton Luu
 UCID: 30085893
 */
 
+$beige: #edbd76;
+$white: #ffffff;
+$blue: #007bff;
+
 * {
-    //margin: 0;
-    //padding: 0;
+  //margin: 0;
+  //padding: 0;
 }
 
 body {
-    background-color: #edbd76;
-    color: #ffffff;
-    padding-top: 0;
-    margin-top: 0;
+  background-color: $beige;
+  color: $white;
+  padding-top: 0;
+  margin-top: 0;
 }
 
 .scenery {
-    position: absolute;
-    left: 50%; // Center horizontally
+  position: absolute;
+  left: 50%; // Center horizontally
 
-    transform: translate(-50%, 0%);
-    filter: grayscale(80%);
-    z-index: -1;
+  transform: translate(-50%, 0%);
+  filter: grayscale(80%);
+  z-index: -1;
 }
 
 .gameTitle {
-    opacity: 0;
-    position: absolute;
-    z-index: 1;
-    font-size: 3rem;
-    text-align: center;
-    margin-top: 5%;
-    width: 0%;
-    padding: 10px;
-    left: 50%; // Center horizontally
-    transform: translate(-50%, 0%);
-    background-color: #ffffff; // Background color for the rounded rectangle
-    border-radius: 10px; // Add rounded corners
-    font-family: 'DotGothic16', sans-serif;
-    color: #4e6df3;
-    animation: typewriter 2s steps(40) 1s forwards;
+  opacity: 0;
+  position: absolute;
+  z-index: 1;
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 5%;
+  width: 0%;
+  padding: 10px;
+  left: 50%; // Center horizontally
+  transform: translate(-50%, 0%);
+  background-color: $white; // Background color for the rounded rectangle
+  border-radius: 10px; // Add rounded corners
+  font-family: "DotGothic16", sans-serif;
+  color: $blue;
+  animation: typewriter 2s steps(40) 1s forwards;
 }
 
 .unitTable {
-    opacity: 0;
-    position: absolute;
-    z-index: 1;
-    text-align: center;
-    margin-top: 15%;
-    left: 50%; // Center horizontally
-    transform: translate(-50%, 0%);
-    animation: fadeIn 3s ease-in-out forwards;
+  opacity: 0;
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  margin-top: 15%;
+  left: 50%; // Center horizontally
+  transform: translate(-50%, 0%);
+  animation: fadeIn 3s ease-in-out forwards;
 }
 
 @keyframes typewriter {
-    from {
-        width: 0;
-        opacity: 0;
-    }
+  from {
+    width: 0;
+    opacity: 0;
+  }
 
-    to {
-        width: 30%;
-        opacity: 1;
-    }
+  to {
+    width: 30%;
+    opacity: 1;
+  }
 }
 
 .startButton {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 25%;
-    opacity: 0;
-    animation: fadeInAndOut 3s linear infinite;
-    animation-delay: 3.5s;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 25%;
+  opacity: 0;
+  animation: fadeInAndOut 3s linear infinite;
+  animation-delay: 3.5s;
 }
 
 @keyframes fadeInAndOut {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
 
-    0%,
-    100% {
-        opacity: 0;
-        transform: translateY(5px);
-    }
-
-    50% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .tutorialTitle {
-    text-align: center;
-    width: 30%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 3%;
-    font-family: 'DotGothic16', sans-serif;
-    font-size: 4rem;
-    opacity: 0;
-    animation: fadeIn 1.5s ease-in-out forwards;
+  text-align: center;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
+  font-family: "DotGothic16", sans-serif;
+  font-size: 4rem;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in-out forwards;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 .container {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    animation: fadeIn 4s ease-in-out forwards;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeIn 4s ease-in-out forwards;
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: 'DotGothic16', sans-serif;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "DotGothic16", sans-serif;
+  }
 
-    h2 {
-        font-size: 2.5rem;
-    }
+  h2 {
+    font-size: 2.5rem;
+  }
 
-    h3 {
-        font-size: 2rem;
-    }
+  h3 {
+    font-size: 2rem;
+  }
 
-    p,
-    li {
-        font-size: 1.5rem;
-    }
-
+  p,
+  li {
+    font-size: 1.5rem;
+  }
 }
 
 .listSpacing {
-    li {
-        padding: {
-            top: 0.5rem;
-            bottom: 0.5rem;
-        }
+  li {
+    padding: {
+      top: 0.5rem;
+      bottom: 0.5rem;
     }
+  }
 }
 
 .startButton2 {
-    position: fixed;
-    bottom: 5px;
-    /* Adjust as needed */
-    right: 10px;
-    /* Adjust as needed */
-    z-index: 999;
-    /* Ensure it appears on top of other content */
-    width: 200px;
+  position: fixed;
+  bottom: 5px;
+  /* Adjust as needed */
+  right: 10px;
+  /* Adjust as needed */
+  z-index: 999;
+  /* Ensure it appears on top of other content */
+  width: 200px;
 }
 
 .unitCard {
-    display: flex;
-    margin: 0 auto;
-    padding-bottom: 20px;
+  display: flex;
+  margin: 0 auto;
+  padding-bottom: 20px;
 
-    h3 {
-        text-align: center;
-        margin-top: 0;
-        margin-bottom: 0;
-    }
+  h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 
-    p {
-        max-width: 200px;
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  p {
+    max-width: 200px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 #unitCards {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .stats {
+  height: 50px;
+
+  td {
     height: 50px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 10px;
+  }
 
-    td {
-        height: 50px;
-        padding-top: 0;
-        padding-bottom: 0;
-        margin-left: 10px;
-    }
+  img {
+    width: 50px;
+    margin-right: 5px; // Add spacing between the heart image and the text
+  }
 
-    img {
-        width: 50px;
-        margin-right: 5px; // Add spacing between the heart image and the text
-    }
-
-    p {
-        height: 50px;
-        margin: 0;
-        padding-left: 15px;
-        text-align: center;
-    }
+  p {
+    height: 50px;
+    margin: 0;
+    padding-left: 15px;
+    text-align: center;
+  }
 }
 
 .playerCard {
-    font-family: 'DotGothic16', sans-serif;
+  font-family: "DotGothic16", sans-serif;
 
+  margin: {
+    left: 30px;
+    right: 30px;
+  }
+
+  h1 {
     margin: {
-        left: 30px;
-        right: 30px;
+      top: 0;
+      bottom: 0;
     }
+  }
 
-    h1 {
-        margin: {
-            top: 0;
-            bottom: 0;
-        }  
+  p {
+    margin: {
+      top: 0;
+      bottom: 0;
     }
-
-    p {
-        margin: {
-            top: 0;
-            bottom: 0;
-        }
-    }
+  }
 }
 
 .playerCards {
-    display: flex;
-    justify-content: center;
-    
+  display: flex;
+  justify-content: center;
 }
 
 .board {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2.5%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2.5%;
 
-    td {
-        border: 8px solid white;
-        width: 150px;
-        height: 150px;
-    }
+  td {
+    border: 8px solid white;
+    width: 150px;
+    height: 150px;
+  }
 }
 
 .unitHealth {
-    display: flex;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-family: 'DotGothic16', sans-serif;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-family: "DotGothic16", sans-serif;
 
-    p {
+  p {
     margin: {
-        top: 0;
-        bottom: 0;
+      top: 0;
+      bottom: 0;
     }
-}
+  }
 }
 
 .actionButtons {
-    display: flex;
-    justify-content: center;
-    font-family: 'DotGothic16', sans-serif;
-    button {
-        
-        background: none;
-            border: none;
-            cursor: pointer;
-            outline: none;
-        margin: 35px;
+  display: flex;
+  justify-content: center;
 
-        font-size: 2rem;
-        color: #ffffff;
-        background-color: #007bff; /* Set the background color */
-            border-radius: 20px; /* Adjust the value to control the pill shape */
-            padding: 10px 20px;
+  button {
+    font-family: "DotGothic16", sans-serif;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin: 35px;
+
+    font-size: 2rem;
+    color: $white;
+    background-color: $blue; /* Set the background color */
+    border-radius: 20px; /* Adjust the value to control the pill shape */
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $beige;
     }
+  }
+}
+
+.general-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 2;
+}
+
+.new-unit-overlay {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.unit-selection {
+  button {
+    background: none; /* Remove the background color */
+    border: none;
+    outline: none;
+
+    &:hover {
+      background-color: $beige;
+    }
+  }
+}
+
+.unit-selection-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  table {
+    margin-left: 50px;
+  }
+
+  #special-ability {
+    width: 150px;
+  }
+}
+
+.fade-in-animation {
+  animation-name: fadeIn; /* Reference the keyframe animation */
+  animation-duration: 0.5s; /* Animation duration */
+  animation-timing-function: ease-in-out; /* Timing function (e.g., ease-in-out) */
 }
 
 .gameBoard {
-    opacity: 0;
-    animation: fadeIn 1.5s ease-in-out forwards;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in-out forwards;
+  font-family: "DotGothic16", sans-serif;
 }
