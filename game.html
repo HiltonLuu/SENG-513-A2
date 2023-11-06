@@ -27,7 +27,7 @@ UCID: 30085893
                         <img src="/assets/heart.png" width="30" />
                     </td>
                     <td>
-                        <p>100</p>
+                        <p id="player1-health">0</p>
                     </td>
                 </tr>
                 <tr>
@@ -35,7 +35,7 @@ UCID: 30085893
                         <img src="/assets/coin.png" width="30" />
                     </td>
                     <td>
-                        <p>2</p>
+                        <p id="player1-points">0</p>
                     </td>
                 </tr>
             </table>
@@ -48,7 +48,7 @@ UCID: 30085893
                         <img src="/assets/heart.png" width="30" />
                     </td>
                     <td>
-                        <p>100</p>
+                        <p id="player2-health">0</p>
                     </td>
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@ UCID: 30085893
                         <img src="/assets/coin.png" width="30" />
                     </td>
                     <td>
-                        <p>2</p>
+                        <p id="player2-points">0</p>
                     </td>
                 </tr>
             </table>
@@ -155,6 +155,10 @@ UCID: 30085893
     <div class="new-unit-overlay general-overlay" id="new-unit-placement">
         <h1>Choose placement of your unit</h1>
         <table class="board" id="unit-placement-board"></table>
+    </div>
+
+    <div class="new-unit-overlay general-overlay fade-in-animation" id="turn-change-overlay">
+        <h1></h1>
     </div>
     <script type="module" src="./scripts/GameDriver.js"></script>
 </body>

@@ -19,13 +19,26 @@ export class GameState {
     this.turn = 1;
   }
 
+  messageAnimation = (msg) => {
+    let overlay = document.getElementById("turn-change-overlay");
+    let header = overlay.getElementsByTagName("h1")[0];
+    header.textContent = msg;
+    overlay.style.display = "flex";
+    setTimeout(() => {
+      overlay.style.display = "none";
+    }, 2000);
+  };
+
   /* 
         will give 2 points to each strategist
         custom animation will be temporarily 
         enlargening the action point icons on the 
         UI to indicate points have been added
     */
-  GiveActionPoints = () => {};
+  giveActionPoints = () => {
+    this.player1.actionPoints += 2;
+    this.player2.actionPoints += 2;
+  };
 
   /*
         will traverse through both player's boards
@@ -50,5 +63,33 @@ export class GameState {
         3 = battle should commence
         Custom animation will be Overlay that shows end turn and the next action to occur
     */
-  EndTurn = () => {};
+  endTurn = () => {
+    switch (this.turn) {
+      case 1:
+        this.turn = 2;
+        this.messageAnimation("Player " + this.turn + " turn!");
+        break;
+      case 2:
+        this.turn = 3;
+        this.messageAnimation("Commence Combat!");
+        break;
+      case 3:
+        this.turn = 1;
+        this.messageAnimation("Player " + this.turn + " turn!");
+        this.giveActionPoints();
+        break;
+    }
+
+    return this.turn;
+  };
+
+  getCurrentPlayer = () => {
+    if (this.turn === 1) {
+      return this.player1;
+    }
+
+    if (this.turn === 2) {
+      return this.player2;
+    }
+  };
 }

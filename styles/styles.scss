@@ -314,6 +314,13 @@ body {
   }
 }
 
+.flex-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .unit-selection {
   button {
     background: none; /* Remove the background color */

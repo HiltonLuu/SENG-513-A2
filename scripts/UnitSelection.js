@@ -3,7 +3,7 @@ import { Wizard } from "./Wizard.js";
 import { Thief } from "./Thief.js";
 import { Archer } from "./Archer.js";
 import { Cleric } from "./Cleric.js";
-import { state, rerenderBoard } from "./GameDriver.js";
+import { state, rerenderBoard, rerenderStats } from "./GameDriver.js";
 
 const changeStatDisplay = (unit) => {
   document.getElementById("unit-name").textContent = unit.type;
@@ -49,15 +49,7 @@ const handleUnitSelectionButtonEvents = (buttonId, unitClass) => {
     document.getElementById("new-unit-overlay").style.display = "none";
     document.getElementById("new-unit-placement").style.display = "flex";
 
-    let currentPlayer;
-
-    if (state.turn === 1) {
-      currentPlayer = state.player1;
-    }
-
-    if (state.turn === 2) {
-      currentPlayer = state.player2;
-    }
+    let currentPlayer = state.getCurrentPlayer();
 
     let boardState = currentPlayer.board;
     let board = document.getElementById("unit-placement-board");
@@ -83,6 +75,8 @@ const handleUnitSelectionButtonEvents = (buttonId, unitClass) => {
         if (boardState[i] === "") {
           currentPlayer.placeNewUnit(new unitClass(), i);
           document.getElementById("new-unit-placement").style.display = "none";
+          currentPlayer.actionPoints -= 2;
+          rerenderStats();
           rerenderBoard();
         }
       });
