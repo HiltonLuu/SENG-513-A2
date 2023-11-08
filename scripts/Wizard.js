@@ -6,6 +6,7 @@ Name: Hilton Luu
 UCID: 30085893
 */
 
+import { Knight } from "./Knight.js";
 import { Strategist } from "./Strategist.js";
 import { Unit } from "./Unit.js";
 
@@ -31,6 +32,10 @@ export class Wizard extends Unit {
   attack = (target, targetStrategist, board) => {
     if (target instanceof Strategist) {
       target.health -= this.magicDamage;
+    } else if (target instanceof Knight) {
+      target.health -= this.magicDamage + 5;
+    } else {
+      target.health -= this.magicDamage - target.magicDefence;
     }
   };
 }

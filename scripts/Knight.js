@@ -31,6 +31,8 @@ export class Knight extends Unit {
     //direct attack
     if (target instanceof Strategist) {
       target.health -= this.physicalDamage + 2;
+    } else {
+      target.health -= this.physicalDamage - target.physicalDefence;
     }
   };
 }

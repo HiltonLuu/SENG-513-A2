@@ -9,6 +9,28 @@ import { changeStatDisplay, defaultStatDisplay } from "./UnitSelection.js";
 import { renderUnitSwapTable } from "./UnitSwap.js";
 import { GameState } from "./GameState.js";
 
+/*
+        remove all units with negative health
+        update count of units defeated accordingly
+        custom animations for removing units by having them shrink
+        custom animation for unit defeated count which will indicate a change
+*/
+const updateBoard = () => {
+  for (let i = 0; i < 5; i++) {
+    if (state.player1.board[i] != "" && state.player1.board[i].health <= 0) {
+      state.player1.health -= state.player1.board[i].health;
+      state.player1.board[i] = "";
+      state.player2.defeatedUnits++;
+    }
+
+    if (state.player2.board[i] != "" && state.player2.board[i].health <= 0) {
+      state.player2.health -= state.player2.board[i].health;
+      state.player2.board[i] = "";
+      state.player1.defeatedUnits++;
+    }
+  }
+};
+
 const generatePlayerBoard = (board, player) => {
   let row = document.createElement("tr");
 
@@ -65,9 +87,14 @@ export const rerenderStats = () => {
   document.getElementById("player1-health").textContent = state.player1.health;
   document.getElementById("player1-points").textContent =
     state.player1.actionPoints;
+  document.getElementById("player1-defeated-units").textContent =
+    state.player1.defeatedUnits;
+
   document.getElementById("player2-health").textContent = state.player2.health;
   document.getElementById("player2-points").textContent =
     state.player2.actionPoints;
+  document.getElementById("player2-defeated-units").textContent =
+    state.player2.defeatedUnits;
 };
 
 //flow chart can be found in readme called MatchStart
@@ -106,6 +133,19 @@ endTurnButton.addEventListener("click", () => {
 
   if (state.turn === 3) {
     state.battle();
+
+    setTimeout(() => {
+      updateBoard();
+      rerenderBoard();
+    }, 4000);
+
+    setTimeout(() => {
+      state.changePlayerCardBackground(state.endTurn());
+      rerenderBoard();
+      rerenderStats();
+
+      state.checkWinCondition();
+    }, 7000);
   }
 });
 

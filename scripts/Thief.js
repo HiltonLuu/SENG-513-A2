@@ -32,6 +32,10 @@ export class Thief extends Unit {
   attack = (target, targetStrategist, board) => {
     if (target instanceof Strategist) {
       target.health -= this.physicalDamage * 2;
+    } else if (this.speed > target.speed) {
+      target.health -= (this.physicalDamage - target.physicalDefence) * 2;
+    } else {
+      target.health -= this.physicalDamage - target.physicalDefence;
     }
   };
 }

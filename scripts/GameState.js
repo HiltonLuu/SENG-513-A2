@@ -83,7 +83,8 @@ export class GameState {
       let player2Unit = this.player2.board[i];
 
       //direct attack if
-      if (player1Unit != "" && player2Unit === "") {
+      if (player1Unit === "" && player2Unit === "") {
+      } else if (player1Unit != "" && player2Unit === "") {
         this.combat.directAttackCombat(
           player1Unit,
           this.player2,
@@ -96,14 +97,21 @@ export class GameState {
           this.player2.board
         );
       } else if (player1Unit.speed === player2Unit.speed) {
+        this.combat.speedTieCombat(
+          player1Unit,
+          player2Unit,
+          this.player1.board
+        );
+        this.combat.speedTieCombat(
+          player2Unit,
+          player1Unit,
+          this.player2.board
+        );
       } else if (player1Unit.speed > player2Unit.speed) {
-        this.combat.regularCombat(player1Unit, player2Unit, board);
+        this.combat.regularCombat(player1Unit, player2Unit, this.player1.board);
       } else if (player2Unit.speed > player1Unit.speed) {
-        this.combat.regularCombat(player2Unit, player1Unit, board);
+        this.combat.regularCombat(player2Unit, player1Unit, this.player2.board);
       }
-
-      //speed tie if statement
-      //regular combat if statement
 
       rerenderBoard();
       rerenderStats();
@@ -114,7 +122,15 @@ export class GameState {
         check if a player has defeated more than 10 units
         or a player's health is less than or equal to zero
     */
-  CheckWinCondition = () => {};
+  checkWinCondition = () => {
+    if (this.player2.health <= 0 || this.player1.defeatedUnits >= 10) {
+      alert("Player 1 wins!");
+    }
+
+    if (this.player1.health <= 0 || this.player2.defeatedUnits >= 10) {
+      alert("Player 2 wins!");
+    }
+  };
 
   /*
         Will change the value of the turn counter

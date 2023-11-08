@@ -31,6 +31,8 @@ export class Archer extends Unit {
   attack = (target, targetStrategist, board) => {
     if (target instanceof Archer || target instanceof Strategist) {
       targetStrategist.health -= this.physicalDamage;
+    } else {
+      target.health -= this.physicalDamage - target.physicalDefence;
     }
   };
 }

@@ -23,19 +23,17 @@ export class Combat {
         slower unit attacks
     */
   regularCombat = (fasterUnit, slowerUnit, board) => {
-    fasterUnit.attack(slowerUnit, targetStrategist, board);
+    fasterUnit.attack(slowerUnit, "", board);
+
+    if (slowerUnit.health > 0) {
+      slowerUnit.attack(fasterUnit, "", board);
+    }
   };
 
   /*
         both units attack each other
     */
-  speedTieCombat = (unit1, unit2) => {};
-
-  /*
-        remove all units with negative health
-        update count of units defeated accordingly
-        custom animations for removing units by having them shrink
-        custom animation for unit defeated count which will indicate a change
-    */
-  UpdateBoard = () => {};
+  speedTieCombat = (unit1, unit2, board) => {
+    unit1.attack(unit2, "", board);
+  };
 }
