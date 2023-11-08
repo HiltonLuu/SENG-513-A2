@@ -28,18 +28,23 @@ export class Strategist {
     */
   placeNewUnit = (unit, location) => {
     this.board[location] = unit;
-    console.log(this.board);
   };
 
   //flowchart can be found in the readme
   /*
         custom animation will take form as a sound effect or a screen overlay that indicates the unit swap
     */
-  SwapUnits = (unit1, unit2) => {};
+  swapUnits = (toSwap) => {
+    let temp = this.board[toSwap[0]];
+    this.board[toSwap[0]] = this.board[toSwap[1]];
+    this.board[toSwap[1]] = temp;
+  };
 
   /*
         checks the number of units currently on the player's board
         returns the total as a result
     */
-  CountTotalUnits = () => {};
+  countTotalUnits = () => {
+    return this.board.filter((unit) => unit !== "").length;
+  };
 }

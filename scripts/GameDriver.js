@@ -6,6 +6,7 @@ Name: Hilton Luu
 UCID: 30085893
 */
 import { changeStatDisplay, defaultStatDisplay } from "./UnitSelection.js";
+import { renderUnitSwapTable } from "./UnitSwap.js";
 import { GameState } from "./GameState.js";
 
 const generatePlayerBoard = (board, player) => {
@@ -75,39 +76,51 @@ const matchStart = () => {
   state.giveActionPoints();
   rerenderBoard();
   rerenderStats();
+
+  //indicate player 1 turn
+  state.changePlayerCardBackground(1);
 };
 
 const newUnitOverlay = document.getElementById("new-unit-overlay");
 const newUnitButton = document.getElementById("new-unit-button");
 newUnitButton.addEventListener("click", () => {
-  let boardFull = true;
-
-  state.getCurrentPlayer().board.map((unit) => {
-    if (unit === "") {
-      boardFull = false;
+  if (state.turn != 3) {
+    if (state.getCurrentPlayer().countTotalUnits() === 5) {
+      state.messageAnimation("Your board is full!");
+    } else if (state.getCurrentPlayer().actionPoints >= 2) {
+      newUnitOverlay.classList.add("fade-in-animation");
+      newUnitOverlay.style.display = "flex";
+    } else {
+      state.messageAnimation("invalid amount of points!");
     }
-  });
-
-  if (boardFull) {
-    state.messageAnimation("Your board is full!");
-  } else if (state.getCurrentPlayer().actionPoints >= 2) {
-    newUnitOverlay.classList.add("fade-in-animation");
-    newUnitOverlay.style.display = "flex";
-  } else {
-    state.messageAnimation("invalid amount of points!");
   }
 });
 
-//const endTurnOverlay = document.getElementById("end-turn-overlay");
 const endTurnButton = document.getElementById("end-turn-button");
 endTurnButton.addEventListener("click", () => {
-  state.endTurn();
-  rerenderBoard();
-  rerenderStats();
+  if (state.turn != 3) {
+    state.changePlayerCardBackground(state.endTurn());
+    rerenderBoard();
+    rerenderStats();
+  }
+
+  if (state.turn === 3) {
+    state.battle();
+  }
 });
 
-//const endTurnOverlay = document.getElementById("end-turn-overlay");
+const moveUnitOverlay = document.getElementById("move-unit-placement");
 const moveUnitButton = document.getElementById("move-unit-button");
-moveUnitButton.addEventListener("click", () => {});
+moveUnitButton.addEventListener("click", () => {
+  if (state.turn != 3) {
+    if (state.getCurrentPlayer().countTotalUnits() === 0) {
+      state.messageAnimation("Your board is empty!");
+    } else {
+      moveUnitOverlay.classList.add("fade-in-animation");
+      moveUnitOverlay.style.display = "flex";
+      renderUnitSwapTable();
+    }
+  }
+});
 
 matchStart();

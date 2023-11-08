@@ -6,6 +6,7 @@ Name: Hilton Luu
 UCID: 30085893
 */
 
+import { Strategist } from "./Strategist.js";
 import { Unit } from "./Unit.js";
 
 export class Thief extends Unit {
@@ -28,5 +29,9 @@ export class Thief extends Unit {
   //if target is instance of Strategist, attack twice
   //if target is slower unit, attack twice
   //else use regular damage calc function
-  attack = (target, targetStrategist, board) => {};
+  attack = (target, targetStrategist, board) => {
+    if (target instanceof Strategist) {
+      target.health -= this.physicalDamage * 2;
+    }
+  };
 }

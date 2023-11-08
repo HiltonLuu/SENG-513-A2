@@ -25,5 +25,11 @@ export class Cleric extends Unit {
   }
 
   //Heal all ally units for 2 health if health is positive
-  attack = (target, targetStrategist, board) => {};
+  attack = (target, targetStrategist, board) => {
+    board.map((allyUnit) => {
+      if (allyUnit != "") {
+        allyUnit.health += 2;
+      }
+    });
+  };
 }

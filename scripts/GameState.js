@@ -7,16 +7,20 @@ UCID: 30085893
 */
 
 import { Strategist } from "./Strategist.js";
+import { Combat } from "./Combat.js";
+import { rerenderBoard, rerenderStats } from "./GameDriver.js";
 
 export class GameState {
   player1 = "";
   player2 = "";
   turn = 0;
+  combat = "";
 
   constructor() {
     this.player1 = new Strategist();
     this.player2 = new Strategist();
     this.turn = 1;
+    this.combat = new Combat();
   }
 
   messageAnimation = (msg) => {
@@ -27,6 +31,31 @@ export class GameState {
     setTimeout(() => {
       overlay.style.display = "none";
     }, 2000);
+  };
+
+  changePlayerCardBackground = (turn) => {
+    switch (turn) {
+      case 1:
+        document.getElementById("player1-stats").classList.add("playerStats");
+        document
+          .getElementById("player2-stats")
+          .classList.remove("playerStats");
+        break;
+      case 2:
+        document
+          .getElementById("player1-stats")
+          .classList.remove("playerStats");
+        document.getElementById("player2-stats").classList.add("playerStats");
+        break;
+      case 3:
+        document
+          .getElementById("player1-stats")
+          .classList.remove("playerStats");
+        document
+          .getElementById("player2-stats")
+          .classList.remove("playerStats");
+        break;
+    }
   };
 
   /* 
@@ -48,7 +77,38 @@ export class GameState {
         custom Animation will be an explosion photo on 
         top of the unit to indicate it was damaged
     */
-  Battle = () => {};
+  battle = () => {
+    for (let i = 0; i < 5; i++) {
+      let player1Unit = this.player1.board[i];
+      let player2Unit = this.player2.board[i];
+
+      //direct attack if
+      if (player1Unit != "" && player2Unit === "") {
+        this.combat.directAttackCombat(
+          player1Unit,
+          this.player2,
+          this.player1.board
+        );
+      } else if (player2Unit != "" && player1Unit === "") {
+        this.combat.directAttackCombat(
+          player2Unit,
+          this.player1,
+          this.player2.board
+        );
+      } else if (player1Unit.speed === player2Unit.speed) {
+      } else if (player1Unit.speed > player2Unit.speed) {
+        this.combat.regularCombat(player1Unit, player2Unit, board);
+      } else if (player2Unit.speed > player1Unit.speed) {
+        this.combat.regularCombat(player2Unit, player1Unit, board);
+      }
+
+      //speed tie if statement
+      //regular combat if statement
+
+      rerenderBoard();
+      rerenderStats();
+    }
+  };
 
   /*
         check if a player has defeated more than 10 units

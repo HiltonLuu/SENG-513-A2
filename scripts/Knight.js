@@ -5,6 +5,7 @@ Assignment 2 Part One
 Name: Hilton Luu
 UCID: 30085893
 */
+import { Strategist } from "./Strategist.js";
 import { Unit } from "./Unit.js";
 
 export class Knight extends Unit {
@@ -26,5 +27,10 @@ export class Knight extends Unit {
 
   //if target is instance of Strategist, deal physical damage + 2
   //else use regular damage calc function
-  attack = (target, targetStrategist, board) => {};
+  attack = (target, targetStrategist, board) => {
+    //direct attack
+    if (target instanceof Strategist) {
+      target.health -= this.physicalDamage + 2;
+    }
+  };
 }

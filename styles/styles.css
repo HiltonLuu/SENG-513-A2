@@ -312,4 +312,10 @@ body {
   font-family: "DotGothic16", sans-serif;
 }
 
+.playerStats {
+  background-color: #007bff;
+  padding: 20px;
+  border-radius: 20px;
+}
+
 /*# sourceMappingURL=styles.css.map */

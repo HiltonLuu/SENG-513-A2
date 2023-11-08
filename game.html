@@ -19,7 +19,7 @@ UCID: 30085893
 
     <img class="scenery" src="/assets/gameBackground.jpg" />
     <div class="playerCards">
-        <div class="playerCard">
+        <div class="playerCard" id="player1-stats">
             <h1>Player 1</h1>
             <table>
                 <tr>
@@ -40,7 +40,7 @@ UCID: 30085893
                 </tr>
             </table>
         </div>
-        <div class="playerCard">
+        <div class="playerCard" id="player2-stats">
             <h1>Player 2</h1>
             <table>
                 <tr>
@@ -155,6 +155,11 @@ UCID: 30085893
     <div class="new-unit-overlay general-overlay" id="new-unit-placement">
         <h1>Choose placement of your unit</h1>
         <table class="board" id="unit-placement-board"></table>
+    </div>
+
+    <div class="new-unit-overlay general-overlay" id="move-unit-placement">
+        <h1>Choose unit to move</h1>
+        <table class="board" id="unit-move-board"></table>
     </div>
 
     <div class="new-unit-overlay general-overlay fade-in-animation" id="turn-change-overlay">

@@ -6,34 +6,36 @@ Name: Hilton Luu
 UCID: 30085893
 */
 
-class Combat {
+export class Combat {
+  constructor() {}
 
-    constructor () {}
-
-    /*
+  /*
         unit attacks target strategist
         custom animation of target strategist taking damage with a pixelated 8-bit damage photo
     */
-    DirectAttackCombat = (attackingUnit, targetStrategist) => {}
+  directAttackCombat = (attackingUnit, targetStrategist, board) => {
+    attackingUnit.attack(targetStrategist, targetStrategist, board);
+  };
 
-    /*
+  /*
         faster unit attacks
         if slower unit is still alive
         slower unit attacks
     */
-    RegularCombat = (fasterUnit, slowerUnit) => {}
+  regularCombat = (fasterUnit, slowerUnit, board) => {
+    fasterUnit.attack(slowerUnit, targetStrategist, board);
+  };
 
-    /*
+  /*
         both units attack each other
     */
-    SpeedTieCombat = (unit1, unit2) => {}
+  speedTieCombat = (unit1, unit2) => {};
 
-
-    /*
+  /*
         remove all units with negative health
         update count of units defeated accordingly
         custom animations for removing units by having them shrink
         custom animation for unit defeated count which will indicate a change
     */
-    UpdateBoard = () => {}
+  UpdateBoard = () => {};
 }
