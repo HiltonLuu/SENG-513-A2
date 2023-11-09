@@ -4,6 +4,8 @@ Date: Oct 12, 2023
 Assignment 2 Part One
 Name: Hilton Luu
 UCID: 30085893
+
+Desc: stores main logic for the game state and has helper functions to update data when needed
 */
 
 import { Strategist } from "./Strategist.js";
@@ -23,6 +25,7 @@ export class GameState {
     this.combat = new Combat();
   }
 
+  //creates an overlay to inform users of turn change or invalid moves
   messageAnimation = (msg) => {
     let overlay = document.getElementById("turn-change-overlay");
     let header = overlay.getElementsByTagName("h1")[0];
@@ -33,6 +36,7 @@ export class GameState {
     }, 2000);
   };
 
+  //adds a background color to the current players turn
   changePlayerCardBackground = (turn) => {
     switch (turn) {
       case 1:
@@ -60,9 +64,6 @@ export class GameState {
 
   /* 
         will give 2 points to each strategist
-        custom animation will be temporarily 
-        enlargening the action point icons on the 
-        UI to indicate points have been added
     */
   giveActionPoints = () => {
     this.player1.actionPoints += 2;
@@ -73,30 +74,33 @@ export class GameState {
         will traverse through both player's boards
         and call various cases of combat from the combat class
         flowchart can be found in readme and is labelled
-    
-        custom Animation will be an explosion photo on 
-        top of the unit to indicate it was damaged
     */
   battle = () => {
     for (let i = 0; i < 5; i++) {
       let player1Unit = this.player1.board[i];
       let player2Unit = this.player2.board[i];
 
-      //direct attack if
+      //if empty do nothing
       if (player1Unit === "" && player2Unit === "") {
-      } else if (player1Unit != "" && player2Unit === "") {
+      }
+      //player1 direct attack
+      else if (player1Unit != "" && player2Unit === "") {
         this.combat.directAttackCombat(
           player1Unit,
           this.player2,
           this.player1.board
         );
-      } else if (player2Unit != "" && player1Unit === "") {
+      }
+      //player2 direct attack
+      else if (player2Unit != "" && player1Unit === "") {
         this.combat.directAttackCombat(
           player2Unit,
           this.player1,
           this.player2.board
         );
-      } else if (player1Unit.speed === player2Unit.speed) {
+      }
+      //speed tie case
+      else if (player1Unit.speed === player2Unit.speed) {
         this.combat.speedTieCombat(
           player1Unit,
           player2Unit,
@@ -107,7 +111,9 @@ export class GameState {
           player1Unit,
           this.player2.board
         );
-      } else if (player1Unit.speed > player2Unit.speed) {
+      }
+      //regular combat cases
+      else if (player1Unit.speed > player2Unit.speed) {
         this.combat.regularCombat(player1Unit, player2Unit, this.player1.board);
       } else if (player2Unit.speed > player1Unit.speed) {
         this.combat.regularCombat(player2Unit, player1Unit, this.player2.board);
@@ -118,10 +124,8 @@ export class GameState {
     }
   };
 
-  /*
-        check if a player has defeated more than 10 units
-        or a player's health is less than or equal to zero
-    */
+  //check if a player has defeated more than 10 units
+  //or a player's health is less than or equal to zero
   checkWinCondition = () => {
     if (this.player2.health <= 0 || this.player1.defeatedUnits >= 10) {
       alert("Player 1 wins!");

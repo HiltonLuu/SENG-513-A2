@@ -1,3 +1,13 @@
+/*
+Course: SENG 513
+Date: Nov 8th, 2023
+Assignment 3
+Name: Hilton Luu
+UCID: 30085893
+
+Description: Logic for manipulating html code and allowing the user to choose a new unit to place
+*/
+
 import { Knight } from "./Knight.js";
 import { Wizard } from "./Wizard.js";
 import { Thief } from "./Thief.js";
@@ -5,6 +15,7 @@ import { Archer } from "./Archer.js";
 import { Cleric } from "./Cleric.js";
 import { state, rerenderBoard, rerenderStats } from "./GameDriver.js";
 
+//used to make unit stats dynamic when hovering over units and deciding which one to pick
 const changeStatDisplay = (unit) => {
   document.getElementById("unit-name").textContent = unit.type;
   document.getElementById("special-ability").textContent = unit.specialAbility;
@@ -17,6 +28,7 @@ const changeStatDisplay = (unit) => {
   document.getElementById("speed").textContent = unit.speed;
 };
 
+//returns the stats to nothing when selecting units and you hover off all units
 const defaultStatDisplay = () => {
   document.getElementById("unit-name").textContent = "";
   document.getElementById("special-ability").textContent = "";
@@ -28,6 +40,7 @@ const defaultStatDisplay = () => {
   document.getElementById("speed").textContent = "";
 };
 
+//array that stores the id of the buttons in the overlay and their corresponding unit classes
 const unitButtons = [
   { buttonId: "knight", unitClass: Knight },
   { buttonId: "wizard", unitClass: Wizard },
@@ -45,6 +58,9 @@ const handleUnitSelectionButtonEvents = (buttonId, unitClass) => {
   button.addEventListener("mouseleave", () => {
     defaultStatDisplay();
   });
+
+  //on click, the unit choice overlay closes,
+  //then an overlay is opened where the user can choose where to place the unit on the board
   button.addEventListener("click", () => {
     document.getElementById("new-unit-overlay").style.display = "none";
     document.getElementById("new-unit-placement").style.display = "flex";
@@ -71,6 +87,7 @@ const handleUnitSelectionButtonEvents = (buttonId, unitClass) => {
         cell.style.borderColor = "#FFFFFF";
       });
 
+      //if valid location to place unit, close overlay and rerender board to reflect changes
       cell.addEventListener("click", () => {
         if (boardState[i] === "") {
           currentPlayer.placeNewUnit(new unitClass(), i);
@@ -81,6 +98,7 @@ const handleUnitSelectionButtonEvents = (buttonId, unitClass) => {
         }
       });
 
+      //shows the units already on the board
       if (boardState[i] != "") {
         let img = document.createElement("img");
         img.classList.add("center-image");
